@@ -2,7 +2,7 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
-import * as TanStackQueryProvider from "@/integrations/tanstack-query/root-provider.tsx";
+import * as TanStackQueryProvider from "@/api/tanstack-query.tsx";
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
@@ -10,11 +10,14 @@ import { routeTree } from "./routeTree.gen";
 import "./styles.css";
 import reportWebVitals from "./reportWebVitals.ts";
 
+import { ThemeProvider } from "@/components/theme-provider";
+import { ApiTokenProvider } from "@/features/api-token/ApiTokenContext.tsx";
+
 // Create a new router instance
 const router = createRouter({
 	routeTree,
 	context: {
-		...TanStackQueryProvider.getContext(),
+		queryClient: TanStackQueryProvider.queryClient,
 	},
 	defaultPreload: "intent",
 	scrollRestoration: true,
@@ -35,9 +38,13 @@ if (rootElement && !rootElement.innerHTML) {
 	const root = ReactDOM.createRoot(rootElement);
 	root.render(
 		<StrictMode>
-			<TanStackQueryProvider.Provider>
-				<RouterProvider router={router} />
-			</TanStackQueryProvider.Provider>
+			<ApiTokenProvider>
+				<ThemeProvider>
+					<TanStackQueryProvider.Provider>
+						<RouterProvider router={router} />
+					</TanStackQueryProvider.Provider>
+				</ThemeProvider>
+			</ApiTokenProvider>
 		</StrictMode>,
 	);
 }

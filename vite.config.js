@@ -21,4 +21,19 @@ export default defineConfig({
 			"@": resolve(__dirname, "./src"),
 		},
 	},
+	server: {
+		allowedHosts: true,
+		proxy: {
+			"/api": {
+				target: "https://godville.net/gods/api",
+				secure: false,
+				changeOrigin: true,
+				rewrite: (path) => path.replace(/^\/api/, ""),
+				headers: {
+					// Prevent cookies from being sent to the target.
+					Cookie: "",
+				},
+			},
+		},
+	},
 });

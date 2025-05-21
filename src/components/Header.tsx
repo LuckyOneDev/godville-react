@@ -1,17 +1,60 @@
+import {
+	NavigationMenu,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+	NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+import { ModeToggle } from "@/components/ui/theme-mode-toggle";
 import { Link } from "@tanstack/react-router";
 
 export default function Header() {
 	return (
-		<header className="p-2 flex gap-2 bg-white text-black justify-between">
-			<nav className="flex flex-row">
-				<div className="px-2 font-bold">
-					<Link to="/">Home</Link>
-				</div>
+		<header className="border-b bg-background">
+			<div className="container mx-auto flex h-16 items-center justify-between px-4 w-full">
+				<NavigationMenu>
+					<NavigationMenuList>
+						<NavigationMenuItem>
+							<NavigationMenuLink>
+								<Link
+									to="/"
+									className="transition-colors hover:text-foreground/80"
+								>
+									Home
+								</Link>
+							</NavigationMenuLink>
+						</NavigationMenuItem>
 
-				<div className="px-2 font-bold">
-					<Link to="/demo/tanstack-query">TanStack Query</Link>
+						<NavigationMenuItem>
+							<NavigationMenuLink asChild>
+								<Link
+									to="/settings"
+									className="transition-colors hover:text-foreground/80"
+								>
+									Settings
+								</Link>
+							</NavigationMenuLink>
+						</NavigationMenuItem>
+
+						<NavigationMenuItem>
+							<NavigationMenuLink asChild>
+								<Link
+									to="/god/$godname"
+									params={{ godname: "The lucky one god" }}
+									className="transition-colors hover:text-foreground/80"
+								>
+									About
+								</Link>
+							</NavigationMenuLink>
+						</NavigationMenuItem>
+					</NavigationMenuList>
+					<NavigationMenuViewport />
+				</NavigationMenu>
+
+				<div className="flex items-center gap-2">
+					<ModeToggle />
 				</div>
-			</nav>
+			</div>
 		</header>
 	);
 }
