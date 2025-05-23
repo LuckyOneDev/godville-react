@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
-type ApiTokenContextType = {
+interface ApiTokenContextType {
 	token: string | null;
 	setToken: (token: string | null) => void;
-};
+}
 
 const ApiTokenContext = createContext<ApiTokenContextType | undefined>(
 	undefined,

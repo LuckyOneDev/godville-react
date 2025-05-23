@@ -10,8 +10,8 @@ import { routeTree } from "./routeTree.gen";
 import "./styles.css";
 import reportWebVitals from "./reportWebVitals.ts";
 
+import { ApiTokenProvider } from "@/api/ApiTokenContext.tsx";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ApiTokenProvider } from "@/features/api-token/ApiTokenContext.tsx";
 
 // Create a new router instance
 const router = createRouter({
@@ -31,6 +31,10 @@ declare module "@tanstack/react-router" {
 		router: typeof router;
 	}
 }
+
+import "@fontsource/lato"; // Defaults to weight 400
+import "@fontsource/lato/400.css"; // Specify weight
+import "@fontsource/lato/400-italic.css"; // Specify weight and style
 
 // Render the app
 const rootElement = document.getElementById("app");

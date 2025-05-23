@@ -25,14 +25,9 @@ export default defineConfig({
 		allowedHosts: true,
 		proxy: {
 			"/api": {
-				target: "https://godville.net/gods/api",
+				target: "http://localhost:8080/api",
 				secure: false,
-				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/api/, ""),
-				headers: {
-					// Prevent cookies from being sent to the target.
-					Cookie: "",
-				},
 			},
 		},
 	},

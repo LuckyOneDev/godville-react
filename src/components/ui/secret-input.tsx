@@ -6,8 +6,6 @@ import { useState } from "react";
 
 export function SecretInput({
 	className,
-	onChange,
-	placeholder = "Enter secret value",
 	...props
 }: React.ComponentProps<"input">) {
 	const [showSecret, setShowSecret] = useState(false);
@@ -19,9 +17,9 @@ export function SecretInput({
 	return (
 		<div className="relative">
 			<Input
-				{...props}
 				type={showSecret ? "text" : "password"}
 				className={cn("pr-10", className)}
+				{...props}
 			/>
 			<Button
 				type="button"

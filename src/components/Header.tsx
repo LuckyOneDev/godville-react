@@ -20,30 +20,27 @@ export default function Header() {
 									to="/"
 									className="transition-colors hover:text-foreground/80"
 								>
-									Home
+									Главная
 								</Link>
 							</NavigationMenuLink>
 						</NavigationMenuItem>
-
+						<NavigationMenuItem>
+							<NavigationMenuLink asChild>
+								<Link
+									to="/stats"
+									className="transition-colors hover:text-foreground/80"
+								>
+									Статистика
+								</Link>
+							</NavigationMenuLink>
+						</NavigationMenuItem>
 						<NavigationMenuItem>
 							<NavigationMenuLink asChild>
 								<Link
 									to="/settings"
 									className="transition-colors hover:text-foreground/80"
 								>
-									Settings
-								</Link>
-							</NavigationMenuLink>
-						</NavigationMenuItem>
-
-						<NavigationMenuItem>
-							<NavigationMenuLink asChild>
-								<Link
-									to="/god/$godname"
-									params={{ godname: "The lucky one god" }}
-									className="transition-colors hover:text-foreground/80"
-								>
-									About
+									Настройки
 								</Link>
 							</NavigationMenuLink>
 						</NavigationMenuItem>
